@@ -38,6 +38,12 @@ const VOTING_PERIOD = 5 // blocks
 const VOTING_DELAY = 1 // 1 Block - How many blocks till a proposal vote becomes active
 const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
 
+// Propose Script + Queue and Execute Script
+const FUNC = "store"
+const FUNC_ARGS = 100 // New value voted into Box.
+const DESCRIPTION = "Proposal #1 - update  value of box to 100"
+const PROPOSAL_FILE = "proposals.json"
+
 module.exports = {
     networkConfig,
     developmentChains,
@@ -47,4 +53,8 @@ module.exports = {
     VOTING_PERIOD,
     VOTING_DELAY,
     ADDRESS_ZERO,
+    FUNC,
+    FUNC_ARGS,
+    DESCRIPTION,
+    PROPOSAL_FILE,
 }

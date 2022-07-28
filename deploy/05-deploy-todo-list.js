@@ -16,7 +16,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     await deploy("TodoList", {
         from: deployer,
         log: true,
-        proxy: true,
+        proxy: { proxyContract: "OpenZeppelinTransparentProxy" },
         waitBlockConfirmations: waitBlockConfirmations,
     })
 }

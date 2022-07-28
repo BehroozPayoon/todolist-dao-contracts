@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.9;
 
-contract TodoList {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract TodoList is Ownable {
     enum Status {
         CREATED,
         DONE,
@@ -25,7 +27,7 @@ contract TodoList {
         tasksCount = 0;
     }
 
-    function createItem(string memory _title, string memory _description) external {
+    function createItem(string memory _title, string memory _description) external onlyOwner {
         tasksCount++;
         tasksMapping[tasksCount] = TodoItem({
             id: tasksCount,
@@ -36,7 +38,7 @@ contract TodoList {
         emit TaskCreated(tasksCount, _title, _description);
     }
 
-    function changeItemStatus(uint256 _itemId, Status _status) external {
+    function changeItemStatus(uint256 _itemId, Status _status) external onlyOwner {
         TodoItem storage item = tasksMapping[_itemId];
         item.status = _status;
     }
